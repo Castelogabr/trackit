@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { ThreeDots } from 'react-loader-spinner'
 import styled from "styled-components";
 import logo from "./assets/logo.png"
 import { Link, useNavigate } from "react-router-dom";
+import { ThreeDots } from 'react-loader-spinner'
 import { useLoginProvider } from "./Context/Auth";
 
 
@@ -10,7 +10,7 @@ export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { handleLogin } = useLoginProvider();
+    const { user, handleLogin } = useLoginProvider();
     const [loading, setLoading] = useState(false);
 
 
@@ -18,7 +18,7 @@ export default function Login() {
         e.preventDefault();
         setLoading(true);
         await handleLogin(email, password);
-        navigate("/habitos")
+        navigate("/hoje")
     };
 
     return (
